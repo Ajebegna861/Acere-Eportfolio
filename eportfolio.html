@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Words in Progress — My Writing ePortfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --paper: #f7f3ec;
+    --cream: #efe9de;
+    --rust: #b54a2c;
+    --rust-light: #f0ddd7;
+    --rust-dark: #7a2e14;
+    --sage: #5a6e56;
+    --sage-light: #dce6da;
+    --muted: #7a7168;
+    --border: #d4c9b8;
+    --serif: 'Libre Baskerville', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--paper);
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #c5bdb0;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #fff;
+    border-bottom-color: var(--rust);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+
+  .hero-text {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4rem 3rem 4rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    line-height: 1.15;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--rust);
+  }
+
+  .hero-body {
+    font-size: 15px;
+    color: #c5bdb0;
+    max-width: 36ch;
+    line-height: 1.75;
+  }
+
+  .hero-image {
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-image-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--cream),
+      var(--cream) 12px,
+      var(--border) 12px,
+      var(--border) 13px
+    );
+    position: relative;
+  }
+
+  .hero-image-placeholder {
+    background: var(--paper);
+    border: 1.5px solid var(--border);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 220px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 4rem 2.5rem;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .rule-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2.5rem;
+  }
+
+  .about-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-sidebar {
+    border-right: 1px solid var(--border);
+    padding-right: 3rem;
+  }
+
+  .about-sidebar h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-sidebar p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .about-body p {
+    margin-bottom: 1rem;
+    color: #3a3530;
+    font-size: 15px;
+  }
+
+  .about-body p:last-child { margin-bottom: 0; }
+
+  /* ── ORGANIZE BANNER ── */
+  .organize-banner {
+    background: var(--rust);
+    color: var(--rust-light);
+    padding: 2rem 2.5rem;
+    text-align: center;
+  }
+
+  .organize-banner strong {
+    color: #fff;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .organize-banner p {
+    font-size: 14px;
+    max-width: 60ch;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  /* ── ASSIGNMENT CARDS ── */
+  .assignments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+
+  .card:hover {
+    box-shadow: 4px 4px 0 var(--border);
+  }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--rust-light);
+    color: var(--rust-dark);
+    padding: 3px 10px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .card-tag.sage {
+    background: var(--sage-light);
+    color: var(--sage);
+  }
+
+  .card-tag.dark {
+    background: #2a2520;
+    color: var(--cream);
+  }
+
+  .card h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .card-stages {
+    list-style: none;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .card-stages li {
+    font-size: 13px;
+    color: #555;
+    padding: 3px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stage-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rust);
+    flex-shrink: 0;
+  }
+
+  .stage-dot.muted { background: var(--border); }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .card-link:hover { border-bottom-color: var(--rust); }
+
+  /* ── SAP-C SECTION ── */
+  .sapc-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4rem 2.5rem;
+  }
+
+  .sapc-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .sapc-left .section-label { color: #d4866a; }
+
+  .sapc-left h2 {
+    color: #fff;
+    font-size: 1.8rem;
+  }
+
+  .sapc-left p {
+    color: #b0a898;
+    font-size: 14px;
+    margin-top: 1rem;
+    line-height: 1.75;
+  }
+
+  .sapc-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sapc-step {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #2e2a25;
+  }
+
+  .sapc-step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--rust);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 28px;
+    margin-top: 2px;
+  }
+
+  .step-content strong {
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .step-content span {
+    font-size: 13px;
+    color: #7a7168;
+  }
+
+  /* ── REFLECTION ── */
+  .reflection-section {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    padding: 4rem 2.5rem;
+  }
+
+  .reflection-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .reflection-body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .reflection-prompts {
+    border-right: 1px solid var(--border);
+    padding-right: 2rem;
+  }
+
+  .prompt-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .prompt-q {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .prompt-hint {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .reflection-text {
+    font-size: 15px;
+    color: #3a3530;
+    line-height: 1.8;
+    font-family: var(--serif);
+    font-style: italic;
+  }
+
+  .reflection-text p { margin-bottom: 1.25rem; }
+
+  blockquote {
+    border-left: 3px solid var(--rust);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--rust-dark);
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist-section {
+    padding: 3rem 2.5rem;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .check-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid var(--border);
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--sage-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .check-icon svg {
+    width: 11px;
+    height: 11px;
+    stroke: var(--sage);
+    stroke-width: 2.5;
+    fill: none;
+  }
+
+  .check-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .check-text span {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: #5a5248;
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  footer a {
+    color: var(--rust);
+    text-decoration: none;
+  }
+
+  .footer-name {
+    font-family: var(--serif);
+    font-style: italic;
+    color: #c5bdb0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a class="nav-logo" href="#home">Words in Progress</a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#writing">Writing Assignments</a></li>
+    <li><a href="#essays">Essays</a></li>
+    <li><a href="#sapc">SAP-C Journey</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero" id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow">ENG 101 · Spring 2025 · ePortfolio</p>
+    <h1 class="hero-title">Words in <em>Progress</em></h1>
+    <p class="hero-body">
+      A collection of my writing from this semester — rough edges, revisions, and all.
+      This portfolio is organized by <strong>writing type</strong>, moving from smaller assignments
+      inward toward the larger essay work, then outward to planning and reflection.
+    </p>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-inner">
+      <div class="hero-image-placeholder">
+        📷 Your photo or a meaningful image goes here
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT / INTRO ── -->
+<div class="about-strip">
+  <div class="about-inner">
+    <div class="about-sidebar">
+      <div class="section-label" style="margin-bottom:0.75rem;">About This Portfolio</div>
+      <h2>Meet the writer</h2>
+      <p>Your Name · ENG 101</p>
+    </div>
+    <div class="about-body">
+      <p>
+        Welcome to my writing portfolio. My name is [Your Name] and I am [brief background — 
+        major, year, something relevant]. This portfolio collects the writing I produced this 
+        semester in English 101, from journal entries and discussion board threads to fully-drafted 
+        essays with all their stages laid bare.
+      </p>
+      <p>
+        I have organized everything by <em>writing type</em>: smaller assignments first, 
+        then essays (each essay with its complete lineage of drafts and feedback), then the 
+        SAP-C planning section, and finally a course-wide reflection. My goal is for a reader 
+        to be able to move through this site in order and watch both the assignments and my 
+        thinking grow — or to jump directly to any piece through the navigation above.
+      </p>
+      <p>
+        Every assignment page includes a brief explanation of the assignment, my goal in doing 
+        it, how I think I achieved that goal, and the course outcome it addresses.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── ORGANIZING PRINCIPLE BANNER ── -->
+<div class="organize-banner">
+  <strong>Layout Principle: Writing Type → Size → Scale</strong>
+  <p>Small writing assignments → Full essays (all stages) → Academic planning → Semester reflection. 
+  You can reach any section from the navigation bar above, on every page.</p>
+</div>
+
+<!-- ── WRITING ASSIGNMENTS ── -->
+<section id="writing">
+  <div class="section-rule">
+    <span class="section-label">Writing Assignments</span>
+    <div class="rule-line"></div>
+  </div>
+  <h2>Smaller Writing Assignments</h2>
+  <p style="color:var(--muted); font-size:14px; margin-bottom:2rem; max-width:65ch;">
+    Two smaller assignments of my choosing — discussion board posts, journal entries, 
+    or other non-essay work from the course.
+  </p>
+
+  <div class="assignments-grid">
+
+    <!-- Assignment 1 -->
+    <div class="card">
+      <span class="card-tag">Discussion Board</span>
+      <h3>Thread Title: [Original Post Prompt]</h3>
+      <p>
+        This discussion board thread asked us to [description of prompt/task]. 
+        My goal was to [your goal]. I fulfilled the course outcome of [outcome] 
+        by [how you achieved it].
+      </p>
+      <p style="font-size:12px; color:var(--muted);">
+        ↳ Identify whose thread you responded to and the date posted.
+      </p>
+      <a href="#" class="card-link">View my post & responses →</a>
+    </div>
+
+    <!-- Assignment 2 -->
+    <div class="card">
+      <span class="card-tag sage">Journal Entry</span>
+      <h3>Journal #[X]: [Prompt Topic]</h3>
+      <p>
+        This journal asked us to reflect on [prompt]. My goal was to [your goal]. 
+        I fulfilled the course outcome of [outcome] through [how you achieved it].
+      </p>
+      <p style="font-size:12px; color:var(--muted);">
+        ↳ Note the prompt and the date assigned.
+      </p>
+      <a href="#" class="card-link">View my journal entry →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ESSAYS ── -->
+<section id="essays" style="padding-top:0;">
+  <div class="section-rule">
+    <span class="section-label">Essays — All Stages</span>
+    <div class="rule-line"></div>
+  </div>
+  <h2>Essay Work</h2>
+  <p style="color:var(--muted); font-size:14px; margin-bottom:2rem; max-width:65ch;">
+    Each essay includes every stage that was required for submission this semester.
+    Stages are labeled so viewers know exactly what they're reading.
+  </p>
+
+  <div class="assignments-grid">
+
+    <!-- Essay 1 -->
+    <div class="card">
+      <span class="card-tag dark">Essay 1 — [Title]</span>
+      <h3>[Your Essay Title Here]</h3>
+      <p>
+        This essay asked me to [brief description]. My goal was to [goal]. 
+        I fulfilled the course outcome of [outcome] by [how].
+      </p>
+      <ul class="card-stages">
+        <li><span class="stage-dot"></span> Prewrite</li>
+        <li><span class="stage-dot"></span> Rough Draft</li>
+        <li><span class="stage-dot"></span> Peer Review (Reviewer: [Name])</li>
+        <li><span class="stage-dot"></span> Final Draft Submitted</li>
+        <li><span class="stage-dot"></span> Graded Draft + Instructor Feedback</li>
+        <li><span class="stage-dot muted"></span> <span style="color:var(--muted)">Revision — not assigned this semester</span></li>
+        <li><span class="stage-dot"></span> Portfolio Final Revision</li>
+      </ul>
+      <a href="#" class="card-link">View all stages →</a>
+    </div>
+
+    <!-- Essay 2 -->
+    <div class="card">
+      <span class="card-tag dark">Essay 2 — [Title]</span>
+      <h3>[Your Essay Title Here]</h3>
+      <p>
+        This essay asked me to [brief description]. My goal was to [goal]. 
+        I fulfilled the course outcome of [outcome] by [how].
+      </p>
+      <ul class="card-stages">
+        <li><span class="stage-dot"></span> Prewrite</li>
+        <li><span class="stage-dot"></span> Rough Draft</li>
+        <li><span class="stage-dot"></span> Peer Review (Reviewer: [Name])</li>
+        <li><span class="stage-dot"></span> Final Draft Submitted</li>
+        <li><span class="stage-dot"></span> Graded Draft + Instructor Feedback</li>
+        <li><span class="stage-dot"></span> Revision</li>
+        <li><span class="stage-dot"></span> Portfolio Final Revision</li>
+      </ul>
+      <a href="#" class="card-link">View all stages →</a>
+    </div>
+
+  </div>
+
+  <p style="font-size:12px; color:var(--muted); margin-top:1.5rem; padding:1rem; border:1px dashed var(--border);">
+    📌 Note: Stages marked with a dimmed dot were not assigned for submission this semester 
+    and therefore are not included. Any stage not originally graded can still be included for 
+    portfolio purposes, but it will not replace the original assignment grade.
+  </p>
+</section>
+
+<!-- ── SAP-C ── -->
+<div class="sapc-section" id="sapc">
+  <div class="sapc-inner">
+    <div class="sapc-left">
+      <div class="section-label">Academic Planning</div>
+      <h2>My SAP-C Journey</h2>
+      <p>
+        This section documents my process of mapping out a college course plan this semester — 
+        from completing the SAP-C to meeting with an advisor and selecting courses for next semester.
+        Here I reflect on what this process revealed about my goals and my path forward.
+      </p>
+      <p style="margin-top:0.75rem;">
+        [Replace this paragraph with your actual reflection on the SAP-C process — 
+        what you discovered, how your plans changed, what advising clarified for you.]
+      </p>
+    </div>
+    <div class="sapc-steps">
+      <div class="sapc-step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <strong>Completed the SAP-C</strong>
+          <span>Identified strengths, interests, and academic goals</span>
+        </div>
+      </div>
+      <div class="sapc-step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <strong>Met with an Academic Advisor</strong>
+          <span>Discussed program requirements and course sequencing</span>
+        </div>
+      </div>
+      <div class="sapc-step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <strong>Reviewed Program Advising Guide</strong>
+          <span>Mapped required vs. elective courses for my major</span>
+        </div>
+      </div>
+      <div class="sapc-step">
+        <span class="step-num">4</span>
+        <div class="step-content">
+          <strong>Explored GenEd Options</strong>
+          <span>Identified which GenEd requirements I still need to fulfill</span>
+        </div>
+      </div>
+      <div class="sapc-step">
+        <span class="step-num">5</span>
+        <div class="step-content">
+          <strong>Selected Intended Courses</strong>
+          <span>Built a realistic plan for next semester's schedule</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── REFLECTION ── -->
+<div class="reflection-section" id="reflection">
+  <div class="reflection-inner">
+    <div class="section-rule">
+      <span class="section-label">Overview Reflection</span>
+      <div class="rule-line"></div>
+    </div>
+    <h2>What I Learned About Myself</h2>
+
+    <div class="reflection-body">
+      <div class="reflection-prompts">
+        <p style="font-size:12px; color:var(--muted); margin-bottom:1.5rem;">
+          This reflection is about <em>you</em>, not just your writing. 
+          Consider questions like:
+        </p>
+        <div class="prompt-item">
+          <p class="prompt-q">Who am I as a thinker?</p>
+          <p class="prompt-hint">How has your approach to ideas, arguments, or problems shifted?</p>
+        </div>
+        <div class="prompt-item">
+          <p class="prompt-q">What surprised me?</p>
+          <p class="prompt-hint">About the work, the process, or yourself as a student?</p>
+        </div>
+        <div class="prompt-item">
+          <p class="prompt-q">What challenged me beyond the page?</p>
+          <p class="prompt-hint">Time, confidence, perspective — not just grammar.</p>
+        </div>
+        <div class="prompt-item">
+          <p class="prompt-q">Where am I going?</p>
+          <p class="prompt-hint">How does this semester connect to who you want to become?</p>
+        </div>
+      </div>
+
+      <div class="reflection-text">
+        <p>
+          [Write your overview reflection here. This is distinct from your home page introduction. 
+          The focus is on what you learned about <em>yourself</em> this semester — 
+          not just your writing skills, but your habits, your voice, your relationship 
+          to difficulty and feedback.]
+        </p>
+        <blockquote>
+          "The moment I realized I wasn't just writing an essay — I was figuring out what I actually thought."
+          — Replace this with a meaningful quote or moment from your semester.
+        </blockquote>
+        <p>
+          [Continue your reflection here. Aim for a paragraph or two that honestly engages 
+          with who you were at the start of this course and who you are now. 
+          What will you carry forward?]
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── REQUIREMENTS CHECKLIST ── -->
+<div class="checklist-section">
+  <div class="section-rule">
+    <span class="section-label">Portfolio Checklist</span>
+    <div class="rule-line"></div>
+  </div>
+  <h2 style="font-size:1.3rem;">Before you submit, verify you have:</h2>
+
+  <div class="checklist-grid">
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>Engaging website title</strong>
+        <span>Creative, not generic. Reflects your voice.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>Home page introduction</strong>
+        <span>Who you are, site purpose, and layout explained.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>Navigation menu</strong>
+        <span>Accessible from every page. Viewers never get stuck.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>2 smaller writing assignments</strong>
+        <span>Journals, DBs, or other non-essay work.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>All essay stages included</strong>
+        <span>Only stages that were assigned — labeled clearly.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>Peer reviewers identified</strong>
+        <span>Whose feedback is whose — labeled on the document.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>SAP-C reflection</strong>
+        <span>Covers the full planning trajectory, not just the form.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>Overview reflection</strong>
+        <span>About you, not just your writing. Separate from intro.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>3-sentence to 1-paragraph explanations</strong>
+        <span>For every assignment: goal, achievement, course outcome.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>Files accessible (not photos)</strong>
+        <span>doc, docx, rtf, or pdf — not jpg images of paper.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+      </div>
+      <div class="check-text">
+        <strong>Portfolio final revision uploaded</strong>
+        <span>Only on the portfolio — not submitted for a grade.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-name">Words in Progress · ENG 101 ePortfolio</span>
+  <span>[Your Name] · [Semester Year]</span>
+</footer>
+
+</body>
+</html>
