@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Words in Progress — My Writing ePortfolio</title>
+  <meta name="description" content="A curated ePortfolio showcasing writing assignments, reflections, and academic growth.">
+  <meta name="theme-color" content="#1a1714">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1a1714;
+      --paper: #f7f3ec;
+      --cream: #efe9de;
+      --rust: #b54a2c;
+      --rust-light: #f0ddd7;
+      --rust-dark: #7a2e14;
+      --sage: #5a6e56;
+      --sage-light: #dce6da;
+      --muted: #7a7168;
+      --border: #d4c9b8;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --display: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* SIDEBAR NAVIGATION */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 260px;
+      height: 100vh;
+      background: linear-gradient(135deg, #2a241f 0%, #1a1714 100%);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2rem 1.5rem;
+      overflow-y: auto;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar-logo {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .sidebar-logo:hover { color: var(--rust); }
+
+    .sidebar-nav { list-style: none; flex: 1; }
+    .sidebar-nav li { margin-bottom: 0.8rem; }
+
+    .sidebar-nav button {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #c5bdb0;
+      text-align: left;
+      font-family: var(--sans);
+      font-size: 14px;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s;
+      letter-spacing: 0.02em;
+    }
+
+    .sidebar-nav button:hover {
+      background: rgba(181, 74, 44, 0.15);
+      color: #fff;
+      padding-left: 1.2rem;
+    }
+
+    .sidebar-nav button.active {
+      background: linear-gradient(135deg, rgba(181, 74, 44, 0.25), rgba(181, 74, 44, 0.1));
+      color: #fff;
+      font-weight: 500;
+      border-left: 3px solid var(--rust);
+      padding-left: calc(1rem - 3px);
+    }
+
+    .sidebar-footer {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 11px;
+      color: #8b8077;
+    }
+
+    /* MAIN CONTENT */
+    .main-container {
+      margin-left: 260px;
+      width: calc(100% - 260px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-nav {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 150;
+      height: 60px;
+    }
+
+    .top-nav-title {
+      flex: 1;
+      margin-left: 2rem;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c5bdb0;
+    }
+
+    .page-content {
+      flex: 1;
+      padding: 3rem 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-hidden { display: none; }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--ink) 0%, #2a241f 100%);
+      color: var(--paper);
+      padding: 4rem 2.5rem;
+      margin: -3rem -2.5rem 3rem;
+      text-align: center;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rust);
+      font-weight: 600;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--rust);
+      box-shadow: 0 8px 24px rgba(181, 74, 44, 0.12);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--rust);
+      background: var(--rust-light);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    footer {
+      background: var(--ink);
+      color: #c5bdb0;
+      padding: 2rem;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar { width: 200px; }
+      .main-container { margin-left: 200px; width: calc(100% - 200px); }
+    }
+  </style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo" onclick="navigateTo('home')">📖 Words in Progress</div>
+  <ul class="sidebar-nav">
+    <li><button class="nav-btn active" data-page="home" onclick="navigateTo('home')">Home</button></li>
+    <li><button class="nav-btn" data-page="essay1" onclick="navigateTo('essay1')">Essay 1</button></li>
+    <li><button class="nav-btn" data-page="essay2" onclick="navigateTo('essay2')">Essay 2</button></li>
+    <li><button class="nav-btn" data-page="essay3" onclick="navigateTo('essay3')">Essay 3</button></li>
+    <li><button class="nav-btn" data-page="sapc" onclick="navigateTo('sapc')">SAP-C Journey</button></li>
+    <li><button class="nav-btn" data-page="reflection" onclick="navigateTo('reflection')">Overview Reflection</button></li>
+    <li><button class="nav-btn" data-page="checklist" onclick="navigateTo('checklist')">Checklist</button></li>
+  </ul>
+  <div class="sidebar-footer">
+    <strong>ENG 101 ePortfolio</strong><br>
+    [Your Name] · 2026
+  </div>
+</aside>
+
+<main class="main-container">
+  <div class="top-nav">
+    <div class="top-nav-title" id="page-title">Home</div>
+  </div>
+
+  <div id="page-home" class="page-content">
+    <div class="hero-section">
+      <h1 style="font-family: var(--display); font-size: 3rem;">Words in Progress</h1>
+      <p>A semester of growth, reflection, and discovery in writing.</p>
+    </div>
+    <div class="section-header">
+      <span class="section-label">Welcome</span>
+      <div class="divider-line"></div>
+    </div>
+    <p>This ePortfolio documents my journey through English 101. Use the navigation to explore my essays and reflections.</p>
+  </div>
+
+  <div id="page-essay1" class="page-content page-hidden">
+    <div class="hero-section">
+      <h1 style="font-family: var(--display);">Exemplification Essay</h1>
+      <p>Exploring themes through specific examples.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card"><h3>Prewriting</h3><p>Initial ideas and outlines.</p></div>
+      <div class="card"><h3>Final Draft</h3><p>The polished version of the essay.</p></div>
+    </div>
+  </div>
+
+  <div id="page-essay2" class="page-content page-hidden"><h2>Essay 2: Compare & Contrast</h2></div>
+  <div id="page-essay3" class="page-content page-hidden"><h2>Essay 3: Argumentative</h2></div>
+  <div id="page-sapc" class="page-content page-hidden"><h2>SAP-C Journey</h2><p>Academic planning and advising reflection.</p></div>
+  <div id="page-reflection" class="page-content page-hidden"><h2>Overview Reflection</h2><p>What I learned about myself as a thinker.</p></div>
+  <div id="page-checklist" class="page-content page-hidden"><h2>Portfolio Checklist</h2></div>
+
+  <footer>
+    &copy; 2026 ENG 101 ePortfolio · [Your Name]
+  </footer>
+</main>
+
+<script>
+  function navigateTo(pageId) {
+    document.querySelectorAll('.page-content').forEach(p => p.classList.add('page-hidden'));
+    document.getElementById(`page-${pageId}`).classList.remove('page-hidden');
+    
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
+    
+    document.getElementById('page-title').textContent = pageId.toUpperCase();
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
