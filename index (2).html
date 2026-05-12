@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Words in Progress — My Writing ePortfolio</title>
+  <meta name="description" content="A curated ePortfolio showcasing writing assignments, reflections, and academic growth.">
+  <meta name="theme-color" content="#1a1714">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1a1714;
+      --paper: #f7f3ec;
+      --cream: #efe9de;
+      --rust: #b54a2c;
+      --rust-light: #f0ddd7;
+      --rust-dark: #7a2e14;
+      --sage: #5a6e56;
+      --sage-light: #dce6da;
+      --muted: #7a7168;
+      --border: #d4c9b8;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --display: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════ */
+    /* SIDEBAR NAVIGATION */
+    /* ═══════════════════════════════════════════════════════════════════════════ */
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 260px;
+      height: 100vh;
+      background: linear-gradient(135deg, #2a241f 0%, #1a1714 100%);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2rem 1.5rem;
+      overflow-y: auto;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar-logo {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .sidebar-logo:hover {
+      color: var(--rust);
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      flex: 1;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 0.8rem;
+    }
+
+    .sidebar-nav button {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #c5bdb0;
+      text-align: left;
+      font-family: var(--sans);
+      font-size: 14px;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s;
+      letter-spacing: 0.02em;
+      font-weight: 400;
+    }
+
+    .sidebar-nav button:hover {
+      background: rgba(181, 74, 44, 0.15);
+      color: #fff;
+      padding-left: 1.2rem;
+    }
+
+    .sidebar-nav button.active {
+      background: linear-gradient(135deg, rgba(181, 74, 44, 0.25), rgba(181, 74, 44, 0.1));
+      color: #fff;
+      font-weight: 500;
+      border-left: 3px solid var(--rust);
+      padding-left: calc(1rem - 3px);
+    }
+
+    .sidebar-footer {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 11px;
+      color: #8b8077;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════ */
+    /* MAIN CONTENT */
+    /* ═══════════════════════════════════════════════════════════════════════════ */
+
+    .main-container {
+      margin-left: 260px;
+      width: calc(100% - 260px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP NAV ── */
+    .top-nav {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 150;
+      height: 60px;
+    }
+
+    .top-nav-logo {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #fff;
+    }
+
+    .top-nav-title {
+      flex: 1;
+      margin-left: 2rem;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c5bdb0;
+    }
+
+    /* ── PAGE CONTENT ── */
+    .page-content {
+      flex: 1;
+      padding: 3rem 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page-hidden {
+      display: none;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero-section {
+      background: linear-gradient(135deg, var(--ink) 0%, #2a241f 100%);
+      color: var(--paper);
+      padding: 4rem 2.5rem;
+      margin: -3rem -2.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(181, 74, 44, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(20px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: #c5bdb0;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    /* ── SECTION DIVIDERS ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rust);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+    }
+
+    h2 {
+      font-family: var(--display);
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    /* ── CARDS ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--rust);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      border-color: var(--rust);
+      box-shadow: 0 8px 24px rgba(181, 74, 44, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rust);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      background: var(--rust-light);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+    }
+
+    .card h3 {
+      margin-bottom: 0.8rem;
+      color: var(--ink);
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #5a5248;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .card-stages {
+      list-style: none;
+      margin: 1.2rem 0;
+      padding: 0;
+    }
+
+    .card-stages li {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .stage-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .card-link {
+      color: var(--rust);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 13px;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card-link:hover {
+      color: var(--rust-dark);
+    }
+
+    /* ── ABOUT STRIP ── */
+    .about-section {
+      background: linear-gradient(135deg, var(--cream) 0%, #f5f0e5 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 2.5rem;
+      margin: 3rem -2.5rem;
+    }
+
+    .about-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-sidebar {
+      border-right: 2px solid var(--border);
+      padding-right: 2rem;
+    }
+
+    .about-sidebar h3 {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-sidebar p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .about-body p {
+      margin-bottom: 1rem;
+      color: #3a3530;
+      font-size: 15px;
+    }
+
+    .about-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── REFLECTION SECTION ── */
+    .reflection-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .reflection-prompts {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .prompt-item {
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prompt-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .prompt-q {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 14px;
+      margin-bottom: 0.5rem;
+    }
+
+    .prompt-hint {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .reflection-text h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .reflection-text blockquote {
+      border-left: 3px solid var(--rust);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--rust-dark);
+      font-size: 15px;
+    }
+
+    /* ── SAP-C TIMELINE ── */
+    .sapc-steps {
+      margin-top: 2rem;
+    }
+
+    .sapc-step {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .sapc-step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: -2rem;
+      width: 2px;
+      background: linear-gradient(180deg, var(--rust) 0%, rgba(181, 74, 44, 0.2) 100%);
+    }
+
+    .sapc-step:last-child::before {
+      display: none;
+    }
+
+    .step-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--rust), var(--rust-dark));
+      color: #fff;
+      border-radius: 50%;
+      font-weight: 700;
+      font-family: var(--display);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-left: -2.5rem;
+    }
+
+    .step-content strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 0.3rem;
+      color: var(--ink);
+    }
+
+    .step-content span {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: #c5bdb0;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    footer span {
+      display: block;
+      margin: 0.3rem 0;
+    }
+
+    /* ── UTILITIES ── */
+    .text-center { text-align: center; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 2rem; }
+    .mb-2 { margin-bottom: 1rem; }
+
+    blockquote {
+      border-left: 3px solid var(--rust);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--rust-dark);
+      font-style: italic;
+    }
+
+    strong { font-weight: 600; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 200px;
+        padding: 1.5rem 1rem;
+      }
+
+      .main-container {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+      }
+
+      .top-nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .page-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-sidebar {
+        border-right: none;
+        border-bottom: 2px solid var(--border);
+        padding-right: 0;
+        padding-bottom: 2rem;
+      }
+
+      .reflection-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .sidebar {
+        width: 180px;
+        padding: 1rem 0.8rem;
+      }
+
+      .sidebar-nav button {
+        font-size: 13px;
+        padding: 0.6rem 0.8rem;
+      }
+
+      .main-container {
+        margin-left: 180px;
+        width: calc(100% - 180px);
+      }
+
+      .sidebar-logo,
+      .top-nav-logo {
+        font-size: 1rem;
+      }
+
+      .page-content {
+        padding: 1.5rem 1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-section {
+        margin: -1.5rem -1rem 2rem;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .about-section {
+        margin: 2rem -1rem;
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════════════════ -->
+<!-- SIDEBAR NAVIGATION -->
+<!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+<aside class="sidebar">
+  <div class="sidebar-logo" onclick="navigateTo('home')">📖 Words in Progress</div>
+  
+  <ul class="sidebar-nav">
+    <li><button class="nav-btn active" data-page="home" onclick="navigateTo('home')">Home</button></li>
+    
+    <li style="margin-top: 1.5rem;">
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #8b8077; padding: 0.5rem 1rem; font-weight: 600;">Essays</div>
+    </li>
+    <li><button class="nav-btn" data-page="essay1" onclick="navigateTo('essay1')">Essay 1 — Exemplification</button></li>
+    <li><button class="nav-btn" data-page="essay2" onclick="navigateTo('essay2')">Essay 2 — Compare & Contrast</button></li>
+    <li><button class="nav-btn" data-page="essay3" onclick="navigateTo('essay3')">Essay 3 — Argumentative</button></li>
+    
+    <li style="margin-top: 1.5rem;">
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #8b8077; padding: 0.5rem 1rem; font-weight: 600;">Reflections</div>
+    </li>
+    <li><button class="nav-btn" data-page="sapc" onclick="navigateTo('sapc')">SAP-C Journey</button></li>
+    <li><button class="nav-btn" data-page="reflection" onclick="navigateTo('reflection')">Overview Reflection</button></li>
+    
+    <li style="margin-top: 1.5rem;">
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #8b8077; padding: 0.5rem 1rem; font-weight: 600;">Additional</div>
+    </li>
+    <li><button class="nav-btn" data-page="assignments" onclick="navigateTo('assignments')">Smaller Assignments</button></li>
+    <li><button class="nav-btn" data-page="checklist" onclick="navigateTo('checklist')">Portfolio Checklist</button></li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">ENG 101 ePortfolio</strong>
+    Your Name · [Semester Year]
+  </div>
+</aside>
+
+<!-- ════════════════════════════════════════════════════════════════════════════ -->
+<!-- MAIN CONTENT -->
+<!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+<main class="main-container">
+
+  <!-- TOP NAVIGATION -->
+  <div class="top-nav">
+    <div class="top-nav-logo">📖</div>
+    <div class="top-nav-title" id="page-title">Home</div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- HOME PAGE -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <div id="page-home" class="page-content">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Welcome to my portfolio</div>
+        <h1 class="hero-title">Words in Progress</h1>
+        <p class="hero-subtitle">A semester of growth, reflection, and discovery in writing. This portfolio traces my journey as a writer, showcasing the assignments, feedback, and insights that shaped my development in English 101.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-header">
+        <span class="section-label">About This Portfolio</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="about-section">
+        <div class="about-inner">
+          <div class="about-sidebar">
+            <h3>Your Name</h3>
+            <p>[Semester Year] · ENG 101</p>
+          </div>
+          <div class="about-body">
+            <p>This ePortfolio is more than a collection of assignments — it's a record of my growth as a writer this semester. Through essays, reflections, and peer feedback, I've learned not just how to write better, but who I am as a thinker and a student.</p>
+            
+            <p>Each section represents a different dimension of the writing process. You'll find my essays in various stages, from early drafts to final revisions, along with the feedback that shaped them. You'll also find my reflections on what I've learned — about writing, about myself, and about what comes next.</p>
+            
+            <p>I've organized this portfolio to be intuitive and easy to navigate. Use the sidebar on the left to explore essays, reflections, and additional assignments. Each page is self-contained, so you can jump to what interests you most.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 2rem;">How to Navigate This Site</h2>
+      <div class="card-grid">
+        <div class="card">
+          <span class="card-tag">Essays</span>
+          <h3>Major Writing Assignments</h3>
+          <p>Three formal essays showing different rhetorical modes. Each includes my prewriting, draft stages, peer feedback, and final revision.</p>
+        </div>
+        <div class="card">
+          <span class="card-tag">Reflections</span>
+          <h3>Thinking About Growth</h3>
+          <p>My SAP-C journey and overview reflection — where I consider who I've become as a writer and thinker this semester.</p>
+        </div>
+        <div class="card">
+          <span class="card-tag">Additional</span>
+          <h3>The Full Picture</h3>
+          <p>Smaller assignments, journals, and discussion boards that rounded out my semester. Plus a checklist of what's included.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- ESSAY 1 PAGE -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <div id="page-essay1" class="page-content page-hidden">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Essay 1</div>
+        <h1 class="hero-title">[Essay Title]</h1>
+        <p class="hero-subtitle">An exemplification essay exploring [your main theme]. This assignment taught me to [key learning].</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Assignment Overview</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>About This Essay</h2>
+    <p>Replace this with a 3-5 sentence overview of your exemplification essay. What was the assignment? What did you choose to explore, and why? What did you learn in the process?</p>
+
+    <h3 style="margin-top: 2rem;">Essay Stages</h3>
+    <div class="card-grid" style="margin: 1.5rem 0;">
+      <div class="card">
+        <span class="card-tag">Stage 1</span>
+        <h3>Prewriting & Brainstorming</h3>
+        <p>My initial ideas, thesis exploration, and brainstorming notes.</p>
+        <a href="#" class="card-link">View prewriting →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 2</span>
+        <h3>First Draft</h3>
+        <p>My initial full draft before peer review and instructor feedback.</p>
+        <a href="#" class="card-link">View draft →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 3</span>
+        <h3>Peer Feedback</h3>
+        <p>Comments and suggestions from my classmates during peer review.</p>
+        <a href="#" class="card-link">View feedback →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 4</span>
+        <h3>Instructor Comments</h3>
+        <p>Detailed feedback from Professor [Name] on the draft.</p>
+        <a href="#" class="card-link">View comments →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 5</span>
+        <h3>Final Revision</h3>
+        <p>My polished final draft, incorporating all feedback and revisions.</p>
+        <a href="#" class="card-link">View final draft →</a>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top: 3rem;">
+      <span class="section-label">My Reflection</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>What This Assignment Taught Me</h2>
+    <p>Write a paragraph reflecting on this essay. Consider:</p>
+    <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+      <li>What was the most challenging part of this assignment?</li>
+      <li>How did peer feedback shape your revision?</li>
+      <li>What did you learn about exemplification and your own writing?</li>
+      <li>Which course outcome does this essay best demonstrate?</li>
+    </ul>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- ESSAY 2 PAGE -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <div id="page-essay2" class="page-content page-hidden">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Essay 2</div>
+        <h1 class="hero-title">[Essay Title]</h1>
+        <p class="hero-subtitle">A compare and contrast essay examining [your main theme]. This assignment taught me to [key learning].</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Assignment Overview</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>About This Essay</h2>
+    <p>Replace this with a 3-5 sentence overview of your compare and contrast essay. What subjects did you compare? What insights emerged from your analysis?</p>
+
+    <h3 style="margin-top: 2rem;">Essay Stages</h3>
+    <div class="card-grid" style="margin: 1.5rem 0;">
+      <div class="card">
+        <span class="card-tag">Stage 1</span>
+        <h3>Prewriting & Brainstorming</h3>
+        <p>My initial research, Venn diagrams, and thesis exploration.</p>
+        <a href="#" class="card-link">View prewriting →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 2</span>
+        <h3>First Draft</h3>
+        <p>My initial full draft before peer review and instructor feedback.</p>
+        <a href="#" class="card-link">View draft →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 3</span>
+        <h3>Peer Feedback</h3>
+        <p>Comments and suggestions from my classmates during peer review.</p>
+        <a href="#" class="card-link">View feedback →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 4</span>
+        <h3>Instructor Comments</h3>
+        <p>Detailed feedback from Professor [Name] on the draft.</p>
+        <a href="#" class="card-link">View comments →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 5</span>
+        <h3>Final Revision</h3>
+        <p>My polished final draft, incorporating all feedback and revisions.</p>
+        <a href="#" class="card-link">View final draft →</a>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top: 3rem;">
+      <span class="section-label">My Reflection</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>What This Assignment Taught Me</h2>
+    <p>Write a paragraph reflecting on this essay. What was challenging? What did you learn about comparison, contrast, and analysis?</p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- ESSAY 3 PAGE -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <div id="page-essay3" class="page-content page-hidden">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Essay 3</div>
+        <h1 class="hero-title">[Essay Title]</h1>
+        <p class="hero-subtitle">An argumentative essay on [your main theme]. This assignment taught me to [key learning].</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Assignment Overview</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>About This Essay</h2>
+    <p>Replace this with a 3-5 sentence overview of your argumentative essay. What position did you argue, and why? What evidence did you use? What did you learn about persuasive writing?</p>
+
+    <h3 style="margin-top: 2rem;">Essay Stages</h3>
+    <div class="card-grid" style="margin: 1.5rem 0;">
+      <div class="card">
+        <span class="card-tag">Stage 1</span>
+        <h3>Prewriting & Research</h3>
+        <p>My argument development, research notes, and thesis statement.</p>
+        <a href="#" class="card-link">View prewriting →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 2</span>
+        <h3>First Draft</h3>
+        <p>My initial full draft with argument and evidence development.</p>
+        <a href="#" class="card-link">View draft →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 3</span>
+        <h3>Peer Feedback</h3>
+        <p>Comments and suggestions from my classmates during peer review.</p>
+        <a href="#" class="card-link">View feedback →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 4</span>
+        <h3>Instructor Comments</h3>
+        <p>Detailed feedback from Professor [Name] on argument strength.</p>
+        <a href="#" class="card-link">View comments →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Stage 5</span>
+        <h3>Final Revision</h3>
+        <p>My polished final draft with strengthened argument and evidence.</p>
+        <a href="#" class="card-link">View final draft →</a>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top: 3rem;">
+      <span class="section-label">My Reflection</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>What This Assignment Taught Me</h2>
+    <p>Write a paragraph reflecting on this essay. What was most challenging about argumentation? How did you handle counterarguments? What will you carry forward?</p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- SAP-C PAGE -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <div id="page-sapc" class="page-content page-hidden">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Academic Planning</div>
+        <h1 class="hero-title">My SAP-C Journey</h1>
+        <p class="hero-subtitle">A reflection on course planning, advising, and my path forward. This process helped me clarify my goals and understand my academic direction.</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">The Process</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>Mapping My Academic Path</h2>
+    <p>This section documents my process of mapping out a college course plan this semester — from completing the SAP-C to meeting with an advisor and selecting courses for next semester. Here I reflect on what this process revealed about my goals and my path forward.</p>
+
+    <div class="sapc-steps">
+      <div class="sapc-step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <strong>Completed the SAP-C Assessment</strong>
+          <span>Identified my strengths, interests, and academic goals for college</span>
+        </div>
+      </div>
+      <div class="sapc-step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <strong>Met with an Academic Advisor</strong>
+          <span>Discussed program requirements, course sequencing, and my major options</span>
+        </div>
+      </div>
+      <div class="sapc-step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <strong>Reviewed Program Advising Guide</strong>
+          <span>Mapped required vs. elective courses for my intended major</span>
+        </div>
+      </div>
+      <div class="sapc-step">
+        <span class="step-num">4</span>
+        <div class="step-content">
+          <strong>Explored GenEd Requirements</strong>
+          <span>Identified which General Education requirements I still need to complete</span>
+        </div>
+      </div>
+      <div class="sapc-step">
+        <span class="step-num">5</span>
+        <div class="step-content">
+          <strong>Selected Intended Courses</strong>
+          <span>Built a realistic plan for next semester's schedule and beyond</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top: 3rem;">
+      <span class="section-label">My Reflection</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>What I Discovered</h2>
+    <p>[Write 2-3 paragraphs about your SAP-C experience. What surprised you? How did your perspective on your major or academic goals shift? What did your advisor help clarify? What are you most excited about for next semester?]</p>
+
+    <blockquote>
+      "Replace this with a meaningful insight from your advising process — a realization, a goal, or something that shifted your thinking about your future."
+    </blockquote>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- REFLECTION PAGE -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <div id="page-reflection" class="page-content page-hidden">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Self Reflection</div>
+        <h1 class="hero-title">What I Learned About Myself</h1>
+        <p class="hero-subtitle">A reflection on who I was at the beginning of this semester and who I am now — not just as a writer, but as a thinker and a student.</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Guiding Questions</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="reflection-wrapper">
+      <div class="reflection-prompts">
+        <p style="font-size: 12px; color: var(--muted); margin-bottom: 1.5rem;">Consider these questions as you write your reflection:</p>
+        
+        <div class="prompt-item">
+          <p class="prompt-q">Who am I as a thinker?</p>
+          <p class="prompt-hint">How has your approach to ideas, arguments, or problems shifted?</p>
+        </div>
+        <div class="prompt-item">
+          <p class="prompt-q">What surprised me?</p>
+          <p class="prompt-hint">About the work, the process, or yourself as a student?</p>
+        </div>
+        <div class="prompt-item">
+          <p class="prompt-q">What challenged me beyond the page?</p>
+          <p class="prompt-hint">Time, confidence, perspective — not just grammar.</p>
+        </div>
+        <div class="prompt-item">
+          <p class="prompt-q">Where am I going?</p>
+          <p class="prompt-hint">How does this semester connect to who you want to become?</p>
+        </div>
+      </div>
+
+      <div class="reflection-text">
+        <h2>My Journey</h2>
+        <p>[Write 3-4 substantial paragraphs here. This is your opportunity to reflect deeply on your growth this semester. Go beyond surface-level observations about your writing to explore who you've become as a thinker. What's changed? What's stayed the same? What will you carry forward?]</p>
+        
+        <blockquote>
+          "The moment I realized I wasn't just writing an essay — I was figuring out what I actually thought."
+          <br><br>
+          — Replace this with a meaningful quote or moment from your semester.
+        </blockquote>
+
+        <p>[Continue your reflection here. Aim for another paragraph that honestly engages with who you were at the start of this course and who you are now. What will you carry forward into your next class, your next major, your future?]</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- ASSIGNMENTS PAGE -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <div id="page-assignments" class="page-content page-hidden">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Beyond Essays</div>
+        <h1 class="hero-title">Smaller Assignments</h1>
+        <p class="hero-subtitle">Journals, discussion boards, and shorter writing assignments that rounded out my semester.</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Additional Writing</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>Journals & Reflective Writing</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-tag">Assignment — Journal</span>
+        <h3>[Journal Title]</h3>
+        <p>Brief description of the journal assignment and what you learned from it. What prompted your reflection?</p>
+        <ul class="card-stages">
+          <li><span class="stage-dot"></span> Submitted</li>
+          <li><span class="stage-dot"></span> Instructor Feedback</li>
+          <li><span class="stage-dot"></span> Reflection</li>
+        </ul>
+        <a href="#" class="card-link">View entry →</a>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Assignment — Journal</span>
+        <h3>[Journal Title]</h3>
+        <p>Brief description of the journal assignment and what you learned from it. What prompted your reflection?</p>
+        <ul class="card-stages">
+          <li><span class="stage-dot"></span> Submitted</li>
+          <li><span class="stage-dot"></span> Instructor Feedback</li>
+          <li><span class="stage-dot"></span> Reflection</li>
+        </ul>
+        <a href="#" class="card-link">View entry →</a>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 3rem;">Discussion Board Participation</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-tag">Assignment — Discussion</span>
+        <h3>[Discussion Topic]</h3>
+        <p>Brief description of the discussion board prompt and what you gained from the conversation with your peers.</p>
+        <ul class="card-stages">
+          <li><span class="stage-dot"></span> Initial Post</li>
+          <li><span class="stage-dot"></span> Peer Responses</li>
+          <li><span class="stage-dot"></span> Reflection</li>
+        </ul>
+        <a href="#" class="card-link">View discussion →</a>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Assignment — Discussion</span>
+        <h3>[Discussion Topic]</h3>
+        <p>Brief description of the discussion board prompt and what you gained from the conversation with your peers.</p>
+        <ul class="card-stages">
+          <li><span class="stage-dot"></span> Initial Post</li>
+          <li><span class="stage-dot"></span> Peer Responses</li>
+          <li><span class="stage-dot"></span> Reflection</li>
+        </ul>
+        <a href="#" class="card-link">View discussion →</a>
+      </div>
+    </div>
+
+    <p style="font-size: 12px; color: var(--muted); margin-top: 2.5rem; padding: 1rem; border: 1px dashed var(--border); border-radius: 6px;">
+      📌 <strong>Note:</strong> These assignments represent a range of writing forms — from reflective to analytical to conversational. Each contributed to my development as a writer in different ways.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- CHECKLIST PAGE -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <div id="page-checklist" class="page-content page-hidden">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Quality Assurance</div>
+        <h1 class="hero-title">Portfolio Checklist</h1>
+        <p class="hero-subtitle">Verification that all required elements are included and polished for submission.</p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <span class="section-label">Before Submission</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <h2>Required Elements</h2>
+    <div class="card-grid">
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Engaging website title</strong>
+            <span style="font-size: 13px; color: var(--muted);">Creative, not generic. Reflects your voice and personality.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Home page introduction</strong>
+            <span style="font-size: 13px; color: var(--muted);">Who you are, site purpose, and navigation guide explained.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Intuitive navigation menu</strong>
+            <span style="font-size: 13px; color: var(--muted);">Accessible from every page. Viewers never get confused.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Three major essays</strong>
+            <span style="font-size: 13px; color: var(--muted);">Exemplification, compare/contrast, and argumentative modes.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Essay stages included</strong>
+            <span style="font-size: 13px; color: var(--muted);">Prewriting, draft, feedback, and final revision clearly labeled.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Peer reviewers identified</strong>
+            <span style="font-size: 13px; color: var(--muted);">Whose feedback is whose — clearly labeled on documents.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">SAP-C reflection</strong>
+            <span style="font-size: 13px; color: var(--muted);">Full planning trajectory covered, not just the form.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Overview reflection</strong>
+            <span style="font-size: 13px; color: var(--muted);">About you as a thinker, separate from the home intro.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Assignment explanations</strong>
+            <span style="font-size: 13px; color: var(--muted);">3-sentence to 1-paragraph for each: goal, achievement, outcome.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Files, not images</strong>
+            <span style="font-size: 13px; color: var(--muted);">doc, docx, rtf, or pdf — not jpg/png screenshots of papers.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, rgba(90, 110, 86, 0.05), rgba(90, 110, 86, 0.02));">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="width: 40px; height: 40px; background: var(--sage); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2">
+              <polyline points="4,10 8,14 16,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 0.3rem;">Smaller assignments</strong>
+            <span style="font-size: 13px; color: var(--muted);">Journals, discussion boards, or other non-essay work.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size: 12px; color: var(--muted); margin-top: 2.5rem; padding: 1.2rem; background: rgba(90, 110, 86, 0.08); border-radius: 6px; border-left: 3px solid var(--sage);">
+      <strong style="color: var(--sage);">✓ Quality Check:</strong> Go through each item above before finalizing your portfolio. Make sure every piece is current, well-formatted, and thoughtfully integrated. Your portfolio is a representation of your work and your growth — polish it accordingly.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
+  <!-- ════════════════════════════════════════════════════════════════════════════ -->
+
+  <footer>
+    <span><strong>Words in Progress · ENG 101 ePortfolio</strong></span>
+    <span>[Your Name] · [Semester Year]</span>
+  </footer>
+
+</main>
+
+<script>
+  // Navigation functionality
+  function navigateTo(pageId) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-content');
+    pages.forEach(page => page.classList.add('page-hidden'));
+
+    // Show selected page
+    const selectedPage = document.getElementById(`page-${pageId}`);
+    if (selectedPage) {
+      selectedPage.classList.remove('page-hidden');
+    }
+
+    // Update active nav button
+    const navBtns = document.querySelectorAll('.nav-btn');
+    navBtns.forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.querySelector(`[data-page="${pageId}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add('active');
+    }
+
+    // Update page title
+    const titleMap = {
+      'home': 'Home',
+      'essay1': 'Essay 1 — Exemplification',
+      'essay2': 'Essay 2 — Compare & Contrast',
+      'essay3': 'Essay 3 — Argumentative',
+      'sapc': 'SAP-C Journey',
+      'reflection': 'Overview Reflection',
+      'assignments': 'Smaller Assignments',
+      'checklist': 'Portfolio Checklist'
+    };
+    document.getElementById('page-title').textContent = titleMap[pageId] || 'Page';
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+  }
+
+  // Set home page as default on load
+  document.addEventListener('DOMContentLoaded', function() {
+    navigateTo('home');
+  });
+</script>
+
+</body>
+</html>
