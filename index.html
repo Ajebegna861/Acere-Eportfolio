@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acere Jebegna — Writing Portfolio</title>
+  <meta name="description" content="Writing ePortfolio exploring identity, society, and personal growth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --dark-bg: #0f1419;
+      --card-bg: #1a1f2e;
+      --text-light: #e8ecf1;
+      --text-muted: #a8b2c1;
+      --accent: #4a9bbe;
+      --accent-light: #6db3d4;
+      --accent-dark: #2d6a8f;
+      --border: #2a3142;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-light);
+      font-family: 'Merriweather', serif;
+      font-size: 16px;
+      line-height: 1.7;
+      display: flex;
+    }
+
+    /* ═══════════════════ SIDEBAR ═══════════════════ */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 280px;
+      height: 100vh;
+      background: linear-gradient(180deg, #0f1419 0%, #1a1f2e 100%);
+      padding: 3rem 0;
+      overflow-y: auto;
+      z-index: 200;
+      border-right: 1px solid var(--border);
+    }
+
+    .sidebar-brand {
+      padding: 0 2rem 3rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      padding: 0 1rem;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 0.3rem;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar-nav a:hover {
+      background: rgba(74, 158, 190, 0.1);
+      color: var(--accent-light);
+      border-left-color: var(--accent);
+    }
+
+    .sidebar-nav a.active {
+      background: rgba(74, 158, 190, 0.15);
+      color: var(--accent-light);
+      border-left-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .sidebar-section-label {
+      padding: 1.5rem 1.25rem 0.75rem;
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* ═══════════════════ MAIN CONTENT ═══════════════════ */
+    .main-content {
+      margin-left: 280px;
+      width: 100%;
+      position: relative;
+    }
+
+    .page {
+      display: none;
+      min-height: 100vh;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ═══════════════════ HERO SECTION ═══════════════════ */
+    .hero {
+      background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+      padding: 6rem 4rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(74, 158, 190, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    /* ═══════════════════ PAGE SECTIONS ═══════════════════ */
+    .page-section {
+      padding: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-bottom: 2rem;
+    }
+
+    /* ═══════════════════ INTRO SECTION ═══════════════════ */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+
+    .intro-text h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .intro-text p {
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .intro-image {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .intro-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ═══════════════════ ESSAYS GRID ═══════════════════ */
+    .essays-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .essay-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .essay-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(74, 158, 190, 0.15);
+      border-color: var(--accent);
+    }
+
+    .essay-card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .essay-card-content {
+      padding: 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .essay-card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .essay-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .essay-card-description {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: auto;
+      line-height: 1.7;
+    }
+
+    .essay-card-meta {
+      font-size: 12px;
+      color: var(--accent);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    /* ═══════════════════ ESSAY PAGE ═══════════════════ */
+    .essay-hero {
+      background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+      padding: 4rem;
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .essay-hero-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .essay-meta {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-item {
+      flex: 1;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    .meta-value {
+      font-size: 16px;
+      color: var(--text-light);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* ═══════════════════ ESSAY TEXT ═══════════════════ */
+    .essay-content {
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .essay-content h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      color: var(--text-light);
+      margin: 2.5rem 0 1rem 0;
+      font-weight: 600;
+    }
+
+    .essay-content h3:first-child {
+      margin-top: 0;
+    }
+
+    .essay-content p {
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    .draft-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .draft-box {
+      background: rgba(74, 158, 190, 0.05);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--accent-dark);
+    }
+
+    .draft-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--accent-light);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .draft-box p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* ═══════════════════ REFLECTION PAGE ═══════════════════ */
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .reflection-image {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .reflection-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sidebar-box {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      height: fit-content;
+    }
+
+    .sidebar-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .sidebar-box ul {
+      list-style: none;
+    }
+
+    .sidebar-box li {
+      padding: 0.75rem 0;
+      color: var(--text-muted);
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-box li:last-child {
+      border-bottom: none;
+    }
+
+    /* ═══════════════════ FOOTER ═══════════════════ */
+    footer {
+      background: linear-gradient(180deg, #1a1f2e 0%, #0f1419 100%);
+      padding: 2rem;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 280px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ═══════════════════ RESPONSIVE ═══════════════════ */
+    @media (max-width: 1024px) {
+      .essays-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .intro-grid, .reflection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .draft-comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+
+      .main-content, footer {
+        margin-left: 200px;
+      }
+
+      .page-section {
+        padding: 2rem;
+      }
+
+      .hero {
+        padding: 3rem 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .essays-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-dark);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ SIDEBAR ════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">Acere Jebegna</div>
+      <div class="sidebar-subtitle">Writing Portfolio</div>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a class="nav-link active" data-page="home">Home</a></li>
+        <li><a class="nav-link" data-page="essays">Essays</a></li>
+      </ul>
+
+      <div class="sidebar-section-label">Essays</div>
+      <ul class="sidebar-nav">
+        <li><a class="nav-link" data-page="essay1">Essay 1: Carrying Two Worlds</a></li>
+        <li><a class="nav-link" data-page="essay2">Essay 2: Fear & Stereotypes</a>
+          <ul class="sidebar-nav" style="margin-top: 0.5rem; margin-left: 1rem;">
+            <li><a style="font-size: 11px; color: var(--text-muted);">Rough Draft</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" data-page="essay3">Essay 3: Racial Profiling</a>
+          <ul class="sidebar-nav" style="margin-top: 0.5rem; margin-left: 1rem;">
+            <li><a style="font-size: 11px; color: var(--text-muted);">Rough Draft</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" data-page="reflection">Reflection</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ════════ MAIN CONTENT ════════ -->
+  <main class="main-content">
+
+    <!-- ══════ HOME PAGE ══════ -->
+    <div class="page active" id="home">
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Becoming a Better Writer</h1>
+          <p>A journey through identity, analysis, and personal growth</p>
+        </div>
+      </div>
+
+      <section class="page-section">
+        <div class="section-subtitle">Introduction</div>
+        <h2 class="section-title">Welcome</h2>
+        <div class="divider"></div>
+
+        <div class="intro-grid">
+          <div class="intro-text">
+            <h3>Hi, I'm Acere Jebegna</h3>
+            <p>
+              A data science major and international student from Ethiopia. This portfolio showcases my writing journey through ENGL 101, 
+              exploring themes of identity, society, and personal transformation.
+            </p>
+            <p>
+              Through these essays, I've learned that writing is more than completing assignments—it's a process of discovery, 
+              critical thinking, and sharing your voice with the world.
+            </p>
+            <p>
+              I invite you to walk through my writing process and see how my essays evolved from rough drafts to polished arguments. 
+              Each piece represents a moment of reflection and growth.
+            </p>
+          </div>
+          <div class="intro-image">
+            <img src="aaron-burden-CKlHKtCJZKk-unsplash.jpg" alt="Writing and reflection">
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ══════ ESSAYS OVERVIEW PAGE ══════ -->
+    <div class="page" id="essays">
+      <section class="page-section">
+        <div class="section-subtitle">All Work</div>
+        <h2 class="section-title">Essays</h2>
+        <div class="divider"></div>
+
+        <div class="essays-grid">
+          <div class="essay-card">
+            <img src="aaron-burden-y02jEX_B0O0-unsplash.jpg" alt="Essay 1" class="essay-card-image">
+            <div class="essay-card-content">
+              <div class="essay-card-tag">Essay 1</div>
+              <h3 class="essay-card-title">Carrying Two Worlds</h3>
+              <p class="essay-card-description">
+                A personal narrative exploring identity as an international student balancing Ethiopian culture with American society.
+              </p>
+              <div class="essay-card-meta">Personal Narrative</div>
+            </div>
+          </div>
+
+          <div class="essay-card">
+            <img src="florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Essay 2" class="essay-card-image">
+            <div class="essay-card-content">
+              <div class="essay-card-tag">Essay 2</div>
+              <h3 class="essay-card-title">Fear & Stereotypes</h3>
+              <p class="essay-card-description">
+                Comparative analysis of Brent Staples' essay and "Fruitvale Station" examining how stereotypes create danger.
+              </p>
+              <div class="essay-card-meta">Comparative Analysis</div>
+            </div>
+          </div>
+
+          <div class="essay-card">
+            <img src="unseen-studio-s9CC2SKySJM-unsplash.jpg" alt="Essay 3" class="essay-card-image">
+            <div class="essay-card-content">
+              <div class="essay-card-tag">Essay 3</div>
+              <h3 class="essay-card-title">Racial Profiling & Perception</h3>
+              <p class="essay-card-description">
+                Research-informed essay examining systemic racial profiling and institutional stereotyping.
+              </p>
+              <div class="essay-card-meta">Research Essay</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <button class="nav-link" data-page="essay1" style="background: var(--accent); color: var(--dark-bg); padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-family: 'Montserrat', sans-serif;">Read Essays</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ══════ ESSAY 1 PAGE ══════ -->
+    <div class="page" id="essay1">
+      <div class="essay-hero">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <img src="aaron-burden-y02jEX_B0O0-unsplash.jpg" alt="Essay 1" class="essay-hero-image">
+          <div class="essay-meta">
+            <div class="meta-item">
+              <div class="meta-label">Essay Type</div>
+              <div class="meta-value">Personal Narrative</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Word Count</div>
+              <div class="meta-value">~800 words</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Focus</div>
+              <div class="meta-value">Identity & Culture</div>
+            </div>
+          </div>
+          <h1 style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;">Carrying Two Worlds</h1>
+          <p style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;">
+            Exploring the complexity of identity when living between cultures
+          </p>
+        </div>
+      </div>
+
+      <section class="page-section">
+        <div class="essay-content">
+          <h3>Final Draft</h3>
+          <p><strong>Carrying Two Worlds</strong></p>
+          <p>Identity is shaped by experiences, culture, family, and personal beliefs. As an international student from Ethiopia living in America, I have experienced many situations that changed the way I see myself and the world around me. Moving between countries and cultures has not always been easy because I constantly had to adapt to new environments while still holding onto the values I was raised with. My Ethiopian background, my faith, my family's expectations, and my experiences adjusting to college life in America have all influenced my identity in different ways. Although these experiences were sometimes difficult, they helped me become more independent, mature, and confident about who I am.</p>
+
+          <p>One example of my identity affecting my life is my experience as an international student. Coming to America for school completely changed my daily life. Everything felt unfamiliar at first, including the educational system, social interactions, and even simple routines. Back home, I was surrounded by people who shared similar cultural values and understood my way of life. In America, I suddenly became a person who was different. There were moments when I felt isolated because I was far away from family and had to figure things out on my own. I had to learn how to adapt quickly, whether it was understanding college expectations, communicating with professors, or managing responsibilities independently. Even though the experience was stressful at times, it forced me to grow as a person. I became more responsible and learned how to handle challenges without always depending on others for help.</p>
+
+          <p>Another example is moving between different cultures and trying to balance them. At home, I was raised with Ethiopian traditions and values that emphasized respect, discipline, and family reputation. However, American culture often encourages individuality and independence. Sometimes I felt caught between these two worlds because the expectations were different. For example, certain behaviors that are considered normal in American culture may not always align with Ethiopian values. There were moments when I felt pressure to fit into American society while also staying connected to my roots. This experience taught me that identity is not limited to one culture. Instead of choosing one side, I learned that I can appreciate both cultures and create my own balance between them.</p>
+
+          <p>Being Ethiopian in America also affected how people viewed me and how I viewed myself. Sometimes people made assumptions about me before getting to know me. Other times, I felt like I had to explain my culture because many people were unfamiliar with Ethiopia beyond stereotypes or limited information. At first, this frustrated me because I felt misunderstood. However, over time, I began to see these moments as opportunities to share my culture with others. I became more proud of my background and realized that my identity is something valuable rather than something I should hide. Representing my culture in a different country made me appreciate where I came from even more.</p>
+
+          <p>Religion and faith have also played an important role in shaping my identity. Growing up, faith was an important part of my life and my family's values. Moving to a different country challenged me in some ways because I was no longer surrounded by the same environment and community that I was used to. College life can sometimes make people lose focus on their beliefs because of stress, distractions, or the pressure to fit in. However, my faith continued to guide me during difficult moments. Whenever I felt overwhelmed, uncertain, or lonely, prayer and faith helped me stay grounded. My beliefs reminded me to remain focused, respectful, and hopeful about the future even during hard times.</p>
+
+          <p>Family expectations are another important example of how identity influenced my experiences. In many Ethiopian families, education is viewed as extremely important because it represents opportunity and success. My family sacrificed a lot to help me pursue my education, which created pressure for me to succeed. There were times when I felt stressed because I did not want to disappoint them. At the same time, their expectations motivated me to work harder and stay disciplined. Knowing that my family believes in me pushes me to continue working toward my goals even when college becomes difficult. Their support and sacrifices constantly remind me why my education matters.</p>
+
+          <p>Finally, adapting to college life in America has taught me many lessons about myself. College required me to become more independent and manage my time carefully. I had to balance classes, assignments, finances, and personal responsibilities while also adjusting to a completely different environment. There were moments when I doubted myself or felt overwhelmed by everything happening around me. However, those experiences taught me resilience and perseverance. I learned that growth often comes from discomfort and challenges. Each obstacle I faced helped me become stronger and more confident in my abilities.</p>
+
+          <p>All of these experiences shaped the person I am today. Being an international student, balancing cultures, representing my Ethiopian identity, relying on faith, handling family expectations, and adapting to college life all helped me better understand myself. Although these experiences were sometimes challenging, they taught me valuable lessons about strength, responsibility, and self-confidence. In the future, I want to continue embracing every part of my identity instead of feeling divided between different worlds. My experiences showed me that my identity is not a weakness or obstacle. It is what makes me unique and gives me the ability to grow, connect with others, and succeed in different environments.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ══════ ESSAY 2 PAGE ══════ -->
+    <div class="page" id="essay2">
+      <div class="essay-hero">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <img src="florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Essay 2" class="essay-hero-image">
+          <div class="essay-meta">
+            <div class="meta-item">
+              <div class="meta-label">Essay Type</div>
+              <div class="meta-value">Comparative Analysis</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Sources Analyzed</div>
+              <div class="meta-value">2 (Essay + Film)</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Focus</div>
+              <div class="meta-value">Stereotypes & Fear</div>
+            </div>
+          </div>
+          <h1 style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;">Fear and Stereotypes in Public Spaces</h1>
+          <p style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;">
+            How racial stereotypes create danger and misunderstanding
+          </p>
+        </div>
+      </div>
+
+      <section class="page-section">
+        <div class="draft-comparison">
+          <div class="draft-box">
+            <h4>Rough Draft</h4>
+            <p>First complete draft developing the comparative analysis between Staples' essay and "Fruitvale Station," establishing main arguments and structural connections.</p>
+          </div>
+          <div class="draft-box">
+            <h4>Final Draft</h4>
+            <p>Refined version with strengthened thesis, clearer analysis, and deeper exploration of how both works demonstrate the consequences of stereotyping.</p>
+          </div>
+        </div>
+
+        <div class="essay-content">
+          <h3>Final Draft Text</h3>
+          <p><strong>Fear and Stereotypes in Public Spaces</strong></p>
+          <p>In Brent Staples' essay <em>Black Men and Public Space</em> and the movie <em>Fruitvale Station</em>, both works show how racial stereotypes cause fear in public spaces and affect the lives of Black men. Staples writes about his personal experiences being feared while walking at night, while <em>Fruitvale Station</em> tells the true story of Oscar Grant, a young Black man whose life ends tragically after being treated as suspicious by police. Although the essay focuses on everyday situations and the movie builds toward a major event, both works demonstrate how stereotypes create fear, misunderstanding, and danger for Black men in public spaces.</p>
+
+          <p>In Staples' essay, he starts by describing how a woman reacted to him with fear while he was walking behind her at night. Even though he was simply walking home, the woman assumed he was dangerous and ran away from him. Staples explains that he realized he had gained "the ability to alter public space in ugly ways" just because of his appearance. This moment shows how stereotypes can immediately influence how people behave. Similarly, in <em>Fruitvale Station</em>, Oscar Grant experiences moments where people react to him with suspicion even when he is doing normal things. Both the essay and the movie show that stereotypes can shape how others see Black men before even knowing who they really are as individuals.</p>
+
+          <p>Another similarity between the essay and the movie is how fear leads to dangerous situations. Staples describes how drivers would lock their car doors as he walked past and how pedestrians would cross the street to avoid him. These reactions made him aware that being seen as dangerous could actually put him in danger. If someone believed he was a threat, they might react in a violent way. Staples explains that when fear and weapons meet, there is always the possibility of death. This statement shows how fear can create unsafe situations, even when there is no real danger.</p>
+
+          <p>This idea connects strongly to <em>Fruitvale Station</em>, where fear and misunderstanding between police officers and Oscar Grant eventually lead to tragedy. In the film's final scenes, Oscar is forced onto the ground by police officers at a train station. The situation escalates very quickly, and tension arises when more officers become aggressive. Even though Oscar does not appear to be threatening anyone, the officers treat him as dangerous. Eventually, one officer shoots him, leading to his tragic death. This moment shows how stereotypes and fear can quickly turn into violence. It proves Staples' point that misunderstandings in public spaces can have deadly consequences when fear controls what people do.</p>
+
+          <p>Despite these similarities, the essay and the movie differ in how they show the outcomes of stereotypes. In Staples' essay, he learns to change his behavior to make others feel less threatened. One way he does this is by whistling classical music while walking at night so people feel more comfortable around him. By doing this, he tries to appear less threatening and reduce the fear others feel. This shows that Staples adapts to society's fears in order to protect himself. However, this also raises an important question about fairness. Staples should not have to change his behavior just to make others feel safe, yet he does it to avoid danger.</p>
+
+          <p>In contrast, <em>Fruitvale Station</em> shows that changing behavior does not always prevent harm. Oscar Grant attempts to cooperate with police officers and follow instructions during the confrontation. He does not resist violently, yet the situation still ends with his tragic death. This difference shows that while some people can avoid danger by adjusting their behavior, others may still face unfair treatment because of the color of their skin, no matter what they do. This makes the movie especially powerful because it shows that stereotypes can have consequences that are just impossible to escape.</p>
+
+          <p>Another difference between the two is the tone and structure. Staples' essay is reflective and focuses on explaining his feelings and experiences. He looks back on events and explains how they shaped his understanding of fear and race in society. The tone is calm but serious, encouraging readers to think carefully about the impact of stereotypes. Because the essay is written from personal experience, readers can clearly understand how everyday moments can carry hidden danger.</p>
+
+          <p>On the other hand, <em>Fruitvale Station</em> is emotional and dramatic because viewers watch events unfold in real time. The film follows Oscar Grant throughout an entire day, allowing the viewers to see his relationships, struggles, and hopes. This structure makes the audience feel connected to him as a person. As the film progresses, the tension slowly builds until the final scene becomes shocking and heartbreaking. While Staples' essay encourages readers to think deeply about stereotypes, the movie makes viewers feel the emotional impact of those stereotypes through action and visuals. The emotional storytelling in the film helps viewers understand how serious the consequences of stereotyping can be.</p>
+
+          <p>Both <em>Black Men and Public Space</em> and <em>Fruitvale Station</em> clearly show how damaging the effects of racial stereotyping can be in everyday life. While Staples tells us how his life is shaped by the fear of being stereotyped, <em>Fruitvale Station</em> shows a real-life example of what can happen when those fears turn into violence. Together, these stories show that stereotyping does more than create fear, it also creates misunderstandings, obstacles, and sometimes tragic outcomes. By comparing these two stories, readers and viewers can see and understand how harmful stereotypes affect individuals and communities. These stories encourage people to question their beliefs and recognize the importance of treating others fairly, especially in shared public spaces.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ══════ ESSAY 3 PAGE ══════ -->
+    <div class="page" id="essay3">
+      <div class="essay-hero">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <img src="unseen-studio-s9CC2SKySJM-unsplash.jpg" alt="Essay 3" class="essay-hero-image">
+          <div class="essay-meta">
+            <div class="meta-item">
+              <div class="meta-label">Essay Type</div>
+              <div class="meta-value">Research Essay</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Focus Level</div>
+              <div class="meta-value">Systemic Analysis</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Progression</div>
+              <div class="meta-value">Essays 1 & 2 → Essay 3</div>
+            </div>
+          </div>
+          <h1 style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;">Racial Profiling and Public Perception</h1>
+          <p style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;">
+            Understanding systemic bias and institutional stereotyping
+          </p>
+        </div>
+      </div>
+
+      <section class="page-section">
+        <div class="draft-comparison">
+          <div class="draft-box">
+            <h4>Rough Draft</h4>
+            <p>Initial research-informed draft developing the thesis about systemic racial profiling and laying groundwork for deeper analysis of how stereotypes become institutionalized.</p>
+          </div>
+          <div class="draft-box">
+            <h4>Final Draft</h4>
+            <p>Refined version connecting personal experiences with research to examine how individual stereotypes become embedded in systems, laws, and policies that harm communities.</p>
+          </div>
+        </div>
+
+        <div class="essay-content">
+          <h3>About This Essay</h3>
+          <p>This research-informed essay examines the systemic issue of racial profiling and how it shapes public perception of certain groups. Building on arguments from my previous essays, this work combines research and personal observation to critique how stereotyping becomes institutionalized.</p>
+
+          <h3>Key Themes Explored</h3>
+          <p><strong>Institutionalization of Stereotypes:</strong> How individual fears and biases become embedded in systems and policies affecting real people and communities.</p>
+
+          <p><strong>Media Representation:</strong> The role of media in perpetuating stereotypes and shaping public perception of marginalized groups.</p>
+
+          <p><strong>Systemic Consequences:</strong> How racial profiling leads to real harms including inequality in law enforcement, criminal justice, and public safety.</p>
+
+          <p><strong>Connection to Previous Essays:</strong> Essay 1 showed personal identity challenges; Essay 2 examined how stereotypes create fear; Essay 3 analyzes how these fears become institutional policies that systematically harm certain groups.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ══════ REFLECTION PAGE ══════ -->
+    <div class="page" id="reflection">
+      <div class="essay-hero">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <div class="essay-meta" style="margin-bottom: 2rem;">
+            <div class="meta-item">
+              <div class="meta-label">Time Frame</div>
+              <div class="meta-value">One Semester</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Course</div>
+              <div class="meta-value">ENGL 101</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Professor</div>
+              <div class="meta-value">Professor Atkins</div>
+            </div>
+          </div>
+          <h1 style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;">My Growth as a Writer</h1>
+          <p style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;">
+            A reflection on transformation, learning, and discovering my voice
+          </p>
+        </div>
+      </div>
+
+      <section class="page-section">
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start;">
+          <div class="essay-content">
+            <p><strong>At the start of this semester,</strong> I saw writing as just checking off assignments and simply following rules. I focused on avoiding mistakes instead of developing real ideas or thinking critically about what I was writing. But ENGL 101 changed that. I learned that writing isn't just a one-shot task, it's a process that involves revision, reflection, organization, and analysis.</p>
+
+            <p>As an international student learning to write academically in the United States, I struggled with grammar, sentence structure, and organizing longer essays. Still, the course helped me get more confident in expressing my ideas and backing them up with evidence. Looking back at my essays, revisions, peer feedback, and instructor comments, the growth is clear. I got better at organizing essays and developing strong analytical arguments.</p>
+
+            <h3>Areas of Growth</h3>
+            <p><strong>Thesis Development:</strong> My essay "Fear and Stereotypes in Public Spaces" shows clear improvement in developing focused thesis statements and organizing entire papers around central arguments.</p>
+
+            <p><strong>Critical Analysis:</strong> My essay "Racial Profiling and Public Perception" demonstrates my ability to move beyond summarizing and develop larger arguments about society and systemic issues.</p>
+
+            <p><strong>Personal Voice:</strong> My narrative essay "Carrying Two Worlds" gave me confidence that personal experiences can work powerfully in academic writing when organized thoughtfully.</p>
+
+            <h3>Ongoing Challenges</h3>
+            <p>One ongoing challenge is grammar and sentence precision. English wasn't my first academic language, so I sometimes struggle with awkward phrasing and keeping sentences flowing smoothly. Another thing I want to strengthen is integrating sources more naturally into my essays. I got better at using quotations, but sometimes my transitions between evidence and analysis still feel forced instead of smooth.</p>
+
+            <h3>Moving Forward</h3>
+            <p>Overall, ENGL 101 changed how I think about writing, learning, and myself as a student. At the beginning of the semester, I thought of writing as just a school requirement. Now I see it as a tool for communication, analysis, and critical thinking. These skills will help me in future courses and in my career as I work toward data science. The writing and critical thinking skills I developed will stay important in both academic and professional settings.</p>
+          </div>
+
+          <div style="background: var(--card-bg); padding: 2rem; border-radius: 8px; border: 1px solid var(--border); height: fit-content;">
+            <h4 style="font-family: 'Montserrat', sans-serif; color: var(--text-light); margin-bottom: 1.5rem; font-weight: 600;">Key Lessons</h4>
+            <ul style="list-style: none;">
+              <li style="padding: 0.75rem 0; color: var(--text-muted); font-size: 14px; border-bottom: 1px solid var(--border);">✓ Writing is a process, not a product</li>
+              <li style="padding: 0.75rem 0; color: var(--text-muted); font-size: 14px; border-bottom: 1px solid var(--border);">✓ Revision strengthens ideas</li>
+              <li style="padding: 0.75rem 0; color: var(--text-muted); font-size: 14px; border-bottom: 1px solid var(--border);">✓ Personal voice matters</li>
+              <li style="padding: 0.75rem 0; color: var(--text-muted); font-size: 14px; border-bottom: 1px solid var(--border);">✓ Evidence supports arguments</li>
+              <li style="padding: 0.75rem 0; color: var(--text-muted); font-size: 14px;">✓ My perspective is valuable</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ════════ FOOTER ════════ -->
+  <footer>
+    <div>Acere Jebegna · Data Science Major · Montgomery College · Spring 2026</div>
+  </footer>
+
+  <script>
+    // Navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = document.querySelectorAll('.page');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const pageId = link.dataset.page;
+        if (!pageId) return;
+        
+        navLinks.forEach(l => l.classList.remove('active'));
+        pages.forEach(p => p.classList.remove('active'));
+        
+        link.classList.add('active');
+        document.getElementById(pageId).classList.add('active');
+        
+        window.scrollTo(0, 0);
+      });
+    });
+
+    // Handle button clicks
+    const buttons = document.querySelectorAll('button.nav-link');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageId = btn.dataset.page;
+        if (pageId) {
+          const link = document.querySelector(`a[data-page="${pageId}"]`);
+          if (link) link.click();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
